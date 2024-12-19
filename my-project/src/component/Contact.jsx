@@ -1,11 +1,37 @@
-import React from "react";
+import React, { useState } from "react";
 import Lottie from "lottie-react";
 import contact from "../assets/Contact.json";
+import axios from "axios";
+
 const facebook = "https://via.placeholder.com/50";
 const instagram = "https://via.placeholder.com/50";
 const linkedin = "https://via.placeholder.com/50";
 
 const Contact = () => {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [success, setSuccess] = useState(false);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post("/api/contact", {
+        name,
+        email,
+        message,
+      });
+      if (response.status === 201) {
+        setSuccess(true);
+        setName("");
+        setEmail("");
+        setMessage("");
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <section
       id="contact"
@@ -52,7 +78,10 @@ const Contact = () => {
               className="w-[350px] mx-auto lg:w-[500px]"
             />
           </div>
-          <form className="w-full md:w-1/2 bg-gray-100 rounded-lg border border-red-300 shadow-lg shadow-red-500 p-10">
+          <form
+            onSubmit={handleSubmit}
+            className="w-full md:w-1/2 bg-gray-100 rounded-lg border border-red-300 shadow-lg shadow-red-500 p-10"
+          >
             <h1 className="text-gray-900 text-4xl font-bold mb-7">
               Contact Me
             </h1>
@@ -66,6 +95,8 @@ const Contact = () => {
               <input
                 type="text"
                 id="name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
                 placeholder="Full Name"
                 className="mt-1 p-2 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
               />
@@ -80,6 +111,8 @@ const Contact = () => {
               <input
                 type="email"
                 id="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 placeholder="Email"
                 className="mt-1 p-2 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
               />
@@ -93,6 +126,8 @@ const Contact = () => {
               </label>
               <textarea
                 id="message"
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
                 placeholder="Enter Your Message"
                 className="mt-1 p-2 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
               />
@@ -103,6 +138,9 @@ const Contact = () => {
             >
               Send Message
             </button>
+            {success && (
+              <p className="text-green-500 mt-4">Message sent successfully!</p>
+            )}
           </form>
         </div>
       </div>
