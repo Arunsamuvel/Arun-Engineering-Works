@@ -1,9 +1,9 @@
 import React from "react";
-import facebook from "../assets/linkedin.png";
-import instagram from "../assets/linkedin.png";
-import linkedin from "../assets/linkedin.png";
 import Lottie from "lottie-react";
-import contact from "../assets/linkedin.png";
+import contact from "../assets/Contact.json";
+const facebook = "https://via.placeholder.com/50";
+const instagram = "https://via.placeholder.com/50";
+const linkedin = "https://via.placeholder.com/50";
 
 const Contact = () => {
   return (
@@ -23,22 +23,28 @@ const Contact = () => {
             </p>
             <div className="flex space-x-4">
               <a
-                href="#"
+                href="https://www.facebook.com/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-foreground/60 hover:text-foreground/80"
               >
-                <img src={facebook} alt="" className="h-6 w-6" />
+                <img src={facebook} alt="Facebook" className="h-6 w-6" />
               </a>
               <a
-                href="#"
+                href="https://www.instagram.com/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-foreground/60 hover:text-foreground/80"
               >
-                <img src={instagram} alt="" className="h-6 w-6" />
+                <img src={instagram} alt="Instagram" className="h-6 w-6" />
               </a>
               <a
-                href="#"
+                href="https://www.linkedin.com/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-foreground/60 hover:text-foreground/80"
               >
-                <img src={linkedin} alt="" className="h-6 w-6" />
+                <img src={linkedin} alt="LinkedIn" className="h-6 w-6" />
               </a>
             </div>
             <Lottie
@@ -91,7 +97,10 @@ const Contact = () => {
                 className="mt-1 p-2 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
               />
             </div>
-            <button className="bg-red-500 text-white px-3 py-2 rounded-lg">
+            <button
+              type="submit"
+              className="bg-red-500 text-white px-3 py-2 rounded-lg"
+            >
               Send Message
             </button>
           </form>
