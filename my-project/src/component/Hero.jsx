@@ -1,11 +1,12 @@
 import React from "react";
+import Particles from "react-tsparticles"; // Import Particles
 import linkedin from "../assets/linkedin.png";
 import hero from "../assets/Myphoto.jpg";
 
 const Hero = () => {
   return (
-    <section className="relative">
-      <div className="max-w-7xl mx-auto">
+    <section className="hero relative">
+      <div className="max-w-7xl mx-auto relative z-10">
         <div className="flex flex-col md:flex-row items-center lg:h-[90vh] justify-between">
           <div className="md:w-1/2 mb-8 md:mb-0 flex flex-col space-y-4 px-6 lg:px-0 lg:mt-0 mt-10">
             <h1 className="lg:text-7xl text-4xl font-bold lg:leading-snug">
@@ -25,6 +26,7 @@ const Hero = () => {
                 href="https://drive.google.com/file/d/1LBMHWpTgTGkvCTcHYiU8JQRCHb5-SRl8/view?usp=sharing"
                 download
                 target="_blank"
+                rel="noopener noreferrer"
               >
                 Download CV
               </a>
