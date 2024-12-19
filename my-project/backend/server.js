@@ -51,7 +51,7 @@ app.post("/api/contact", async (req, res) => {
 });
 
 // Start Server
-const PORT = 5000;
-app.listen(PORT, () =>
-  console.log(`Server running on http://localhost:${PORT}`)
-);
+app.listen(5004, () => {
+  console.log(`Server running on http://localhost:5004`);
+  require(`http://localhost:5004/index.html`);
+});
