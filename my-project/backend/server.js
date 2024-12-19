@@ -10,18 +10,22 @@ app.use(bodyParser.json());
 app.use(cors());
 
 // MongoDB Connection
+const DATABASE_URL =
+  "mongodb+srv://arun15ee03:IKxzMBjnNmtjITBk@cluster0.mcj8u.mongodb.net/myFirstDatabase";
+
+// Connect to MongoDB Atlas
 mongoose
-  .connect("mongodb://localhost:27017/contactDB", {
+  .connect(DATABASE_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
-  .then(() => console.log("MongoDB connected"))
-  .catch((err) => console.error("MongoDB connection error:", err));
+  .then(() => console.log("Connected to MongoDB Atlas"))
+  .catch((err) => console.error("Error connecting to MongoDB Atlas:", err));
 
 // Define Schema
 const contactSchema = new mongoose.Schema({
   name: { type: String, required: true },
-  email: { type: String, required: true },
+  email: { type: String, required: true, unique: true },
   message: { type: String, required: true },
   date: { type: Date, default: Date.now },
 });
@@ -33,7 +37,11 @@ const Contact = mongoose.model("Contact", contactSchema);
 app.post("/api/contact", async (req, res) => {
   try {
     const { name, email, message } = req.body;
-    const newContact = new Contact({ name, email, message });
+    const existingContact = await Contact.findOne({ email });
+    if (existingContact) {
+      return res.status(400).json({ message: "Email already exists" });
+    }
+    const newContact = new Contact({ name, email, message, date: Date.now() });
     await newContact.save();
     res.status(201).json({ message: "Contact saved successfully" });
   } catch (error) {
