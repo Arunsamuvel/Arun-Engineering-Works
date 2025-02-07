@@ -5,6 +5,7 @@ import whatsapp from "../assets/whatsapp.png";
 import facebook from "../assets/facebook.png";
 import instagram from "../assets/instagram.png";
 import hero from "../assets/Myphoto.jpg";
+import arun from "../assets/arun.jpg";
 import { Facebook } from "lucide-react";
 
 const Hero = () => {
@@ -35,8 +36,14 @@ const Hero = () => {
               <a href="7502361667">Contact Now</a>
             </button>
           </div>
-          <div className="md:w-1/2 relative flex justify-center items-end">
-            <img src={hero} alt="hero" className="lg:h-[90vh] h-96" />
+          {/* hero section Arun Profile */}
+          <div className="md:w-1/2 relative flex justify-center items-center">
+            <img
+              src={arun}
+              alt="Hero"
+              className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl 
+               h-auto rounded-md shadow-lg object-cover"
+            />
           </div>
         </div>
       </div>

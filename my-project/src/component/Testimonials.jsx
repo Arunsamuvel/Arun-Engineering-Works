@@ -1,12 +1,7 @@
 import React from "react";
-// Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
-
-// Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
-
-// import required modules
 import { Autoplay, Pagination } from "swiper/modules";
 import { Quote, Star } from "lucide-react";
 
@@ -14,40 +9,45 @@ const Testimonials = () => {
   const testimonials = [
     {
       id: 1,
-      name: "Emily Johnson",
+      name: "Customer Name",
       rating: 5,
-      text: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Culpa dolor, voluptatibus quos ipsam et est!",
+      text: "Customer feedback will be added soon. Stay tuned for updates!",
+      designation: "Designation / Company Name",
     },
     {
       id: 2,
-      name: "Michael Chen",
+      name: "Customer Name",
       rating: 4,
-      text: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Culpa dolor, voluptatibus quos ipsam et est!",
+      text: "Customer feedback will be added soon. Stay tuned for updates!",
+      designation: "Designation / Company Name",
     },
     {
       id: 3,
-      name: "Sarah Thompson",
+      name: "Customer Name",
       rating: 5,
-      text: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Culpa dolor, voluptatibus quos ipsam et est!",
+      text: "Customer feedback will be added soon. Stay tuned for updates!",
+      designation: "Designation / Company Name",
     },
     {
       id: 4,
-      name: "David Rodriguez",
+      name: "Customer Name",
       rating: 5,
-      text: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Culpa dolor, voluptatibus quos ipsam et est!",
+      text: "Customer feedback will be added soon. Stay tuned for updates!",
+      designation: "Designation / Company Name",
     },
     {
       id: 5,
-      name: "Lisa Patel",
+      name: "Customer Name",
       rating: 4,
-      text: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Culpa dolor, voluptatibus quos ipsam et est!",
+      text: "Customer feedback will be added soon. Stay tuned for updates!",
+      designation: "Designation / Company Name",
     },
   ];
 
   return (
     <div id="testimonials" className="py-10 bg-gray-100 relative">
       <h1 className="text-center text-2xl lg:text-4xl font-bold">
-        What our Customer Say
+        Customer Testimonials
       </h1>
       <div className="max-w-6xl mx-auto py-10 px-5">
         <Swiper
@@ -91,7 +91,7 @@ const Testimonials = () => {
                     <h3 className="font-semibold text-red-500 text-lg">
                       {item.name}
                     </h3>
-                    <p className="text-sm mt-1">CEO, Webelite Builders</p>
+                    <p className="text-sm mt-1">{item.designation}</p>
                   </div>
                   <Quote className="text-red-400" />
                 </div>

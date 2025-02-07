@@ -1,17 +1,12 @@
 import React, { useState } from "react";
 import Lottie from "lottie-react";
 import contact from "../assets/Contact.json";
-import axios from "axios";
-
-const facebook = "https://via.placeholder.com/50";
-const instagram = "https://via.placeholder.com/50";
-const linkedin = "https://via.placeholder.com/50";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: "",
-    email: "",
-    message: "",
+    phone: "",
+    place: "",
   });
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState("");
@@ -26,66 +21,43 @@ const Contact = () => {
     setError("");
     setSuccess(false);
 
-    // Validation
-    if (!formData.name || !formData.email || !formData.message) {
+    if (!formData.name || !formData.phone || !formData.place) {
       setError("All fields are required.");
       return;
     }
 
     try {
-      const response = await axios.post("/api/contact", formData);
-      if (response.status === 201) {
+      const response = await fetch(
+        "https://formsubmit.co/aruneeeworks@gmail.com?_template=table", // ✅ FIXED
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(formData),
+        }
+      );
+
+      if (response.ok) {
         setSuccess(true);
-        setFormData({ name: "", email: "", message: "" }); // Reset form
+        setFormData({ name: "", phone: "", place: "" }); // Reset form
+      } else {
+        setError("Failed to send the message. Please try again.");
       }
     } catch (err) {
       console.error(err);
-      setError("Failed to send the message. Please try again later.");
+      setError("Something went wrong. Please try again later.");
     }
   };
 
   return (
-    <section
-      id="contact"
-      className="z-50 bg-gray-800 relative py-10 px-5 md:px-0"
-    >
-      <div className="mb-16 max-w-7xl mx-auto">
+    <section className="bg-gray-800 py-10 px-5 md:px-0">
+      <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row justify-between items-center">
           {/* Left Section */}
-          <div className="md:w-1/2 mb-8 ml-2 md:mb-0">
-            <h2 className="text-3xl font-bold mb-3 text-red-500">
-              Get in Touch
-            </h2>
+          <div className="md:w-1/2 mb-8">
+            <h2 className="text-3xl font-bold text-red-500">Get in Touch</h2>
             <p className="mb-4 text-white/85">
-              I'm always open to new opportunities and collaboration. Feel free
-              to reach out!
+              We’re happy to assist you. Send us a message!
             </p>
-            <div className="flex space-x-4">
-              <a
-                href="https://www.facebook.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:opacity-80"
-              >
-                <img src={facebook} alt="Facebook" className="h-6 w-6" />
-              </a>
-              <a
-                href="https://www.instagram.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:opacity-80"
-              >
-                <img src={instagram} alt="Instagram" className="h-6 w-6" />
-              </a>
-              <a
-                href="https://www.linkedin.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:opacity-80"
-              >
-                <img src={linkedin} alt="LinkedIn" className="h-6 w-6" />
-              </a>
-            </div>
             <Lottie
               animationData={contact}
               className="w-[350px] mx-auto lg:w-[500px]"
@@ -95,72 +67,61 @@ const Contact = () => {
           {/* Right Section (Form) */}
           <form
             onSubmit={handleSubmit}
-            className="w-full md:w-1/2 bg-gray-100 rounded-lg border border-red-300 shadow-lg shadow-red-500 p-10"
+            className="w-full md:w-1/2 bg-gray-100 rounded-lg p-10 shadow-lg"
           >
             <h1 className="text-gray-900 text-4xl font-bold mb-7">
-              Contact Me
+              Contact Us
             </h1>
 
-            {/* Name Input */}
+            {/* Full Name */}
             <div className="mb-4">
-              <label
-                htmlFor="name"
-                className="block text-sm font-medium text-gray-700"
-              >
-                Name
+              <label className="block text-sm font-medium text-gray-700">
+                Full Name
               </label>
               <input
                 type="text"
-                id="name"
                 name="name"
                 value={formData.name}
                 onChange={handleChange}
                 placeholder="Full Name"
-                className="mt-1 p-2 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                className="mt-1 p-2 block w-full rounded-md border-gray-300"
               />
             </div>
 
-            {/* Email Input */}
+            {/* Phone Number */}
             <div className="mb-4">
-              <label
-                htmlFor="email"
-                className="block text-sm font-medium text-gray-700"
-              >
-                Email
+              <label className="block text-sm font-medium text-gray-700">
+                Phone Number
               </label>
               <input
-                type="email"
-                id="email"
-                name="email"
-                value={formData.email}
+                type="tel"
+                name="phone"
+                value={formData.phone}
                 onChange={handleChange}
-                placeholder="Email"
-                className="mt-1 p-2 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                placeholder="Phone Number"
+                className="mt-1 p-2 block w-full rounded-md border-gray-300"
               />
             </div>
 
-            {/* Message Input */}
+            {/* Place */}
             <div className="mb-4">
-              <label
-                htmlFor="message"
-                className="block text-sm font-medium text-gray-700"
-              >
-                Message
+              <label className="block text-sm font-medium text-gray-700">
+                Place
               </label>
-              <textarea
-                id="message"
-                name="message"
-                value={formData.message}
+              <input
+                type="text"
+                name="place"
+                value={formData.place}
                 onChange={handleChange}
-                placeholder="Enter Your Message"
-                className="mt-1 p-2 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                placeholder="Enter Your Place"
+                className="mt-1 p-2 block w-full rounded-md border-gray-300"
               />
             </div>
 
             {/* Submit Button */}
             <button
               type="submit"
-              className="bg-red-500 text-white px-3 py-2 rounded-lg hover:bg-red-600"
+              className="bg-red-500 text-white px-3 py-2 rounded-lg"
             >
               Send Message
             </button>
