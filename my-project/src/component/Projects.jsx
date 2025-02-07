@@ -1,21 +1,19 @@
 const Projects = () => {
   const projectJson = [
     {
-      title: "Portfolio",
+      title: "",
       desc: "Webelite Builders did an amazing job on our website. Their professionalism and dedication to our project were outstanding.",
       image: ".png",
       live: "https://rohitsingh93300-portfolio.vercel.app/",
       github: "https://github.com/rohitsingh93300/portfolio",
     },
     {
-      title: "Spicy Bites",
+      title: "",
       desc: "The team at Webelite Builders exceeded our expectations with their digital marketing expertise. Highly recommend!",
       image: ".png",
-      live: "https://spicybites.netlify.app/",
-      github: "https://github.com/rohitsingh93300/YtSpicyBites",
     },
     {
-      title: "YouTube Clone",
+      title: "",
       desc: "Working with Webelite Builders was a seamless experience. They brought our vision to life with a modern, responsive website.",
       image: ".png",
       live: "https://youtube-clone-93300.netlify.app/",
@@ -49,12 +47,26 @@ const Projects = () => {
               <div key={index}>
                 <h3 className="text-2xl font-bold mb-4">{items.title}</h3>
                 <p className="text-lg mb-4">{items.desc}</p>
-                <img src={items.image} alt={items.title} className="w-full h-64 object-cover mb-4" />
+                <img
+                  src={items.image}
+                  alt={items.title}
+                  className="w-full h-64 object-cover mb-4"
+                />
                 <div className="flex justify-between">
-                  <a href={items.live} target="_blank" rel="noopener noreferrer" className="text-lg text-blue-500 hover:text-blue-700">
+                  <a
+                    href={items.live}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-lg text-blue-500 hover:text-blue-700"
+                  >
                     Live Demo
                   </a>
-                  <a href={items.github} target="_blank" rel="noopener noreferrer" className="text-lg text-blue-500 hover:text-blue-700">
+                  <a
+                    href={items.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-lg text-blue-500 hover:text-blue-700"
+                  >
                     GitHub
                   </a>
                 </div>
