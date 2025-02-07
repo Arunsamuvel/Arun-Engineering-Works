@@ -1,39 +1,59 @@
+import smartHomeImg from "../assets/smartHomeImg.png";
+import commerical from "../assets/commerical.jpg";
+import event from "../assets/Event.jpg";
+import cctv from "../assets/cctv.jpg";
+import gover from "../assets/gover.jpg";
+import house from "../assets/redendial.jpg";
+import chandelierImg from "../assets/Chandler.jpg";
+import profileLightsImg from "../assets/RichAvenue.jpg";
+import apart from "../assets/apart.jpg";
+
 const Projects = () => {
   const projectJson = [
     {
       title: "Smart Home Automation",
       desc: "Designed and implemented smart home solutions using IoT technology, enabling remote control of lighting, security, and appliances.",
-      image: "smart-home.png",
+      image: smartHomeImg,
     },
     {
-      title: "Industrial Wiring",
-      desc: "Handled industrial wiring projects for factories and manufacturing units, ensuring high safety standards and efficiency.",
-      image: "industrial-wiring.png",
+      title: "Commercial Wiring",
+      desc: "Handled Commercial wiring projects for factories and manufacturing units, ensuring high safety standards and efficiency.",
+      image: commerical,
     },
     {
       title: "Apartment Electrical Works",
       desc: "Completed full electrical installations for apartment complexes, including power distribution and automation systems.",
-      image: "../assets/Arun.jpg",
+      image: apart,
     },
     {
       title: "Smart Cities Electrical Infrastructure",
       desc: "Contributed to smart city projects by integrating intelligent lighting, surveillance, and energy-efficient systems.",
-      image: "smart-cities.png",
+      image: gover,
     },
     {
       title: "Event Decorative Lighting",
       desc: "Designed and installed decorative lighting for major events and celebrations, enhancing ambiance with smart lighting solutions.",
-      image: "event-lighting.png",
+      image: event,
     },
     {
       title: "CCTV Installation",
       desc: "Installed and configured high-resolution CCTV systems for residential, commercial, and industrial security monitoring.",
-      image: "cctv.png",
+      image: cctv,
     },
     {
       title: "Residential Wiring",
       desc: "Completed numerous residential wiring projects, ensuring safety, compliance, and modern electrical standards.",
-      image: "residential-wiring.png",
+      image: house,
+    },
+    {
+      title: "Chandelier Lighting Installation", // New Project
+      desc: "Installed elegant chandelier lighting solutions for homes, hotels, and event spaces, enhancing aesthetics with modern designs.",
+      image: chandelierImg,
+    },
+    {
+      title: "Profile Lights Installation", // New Project
+      desc: "Installed high-quality profile lighting systems for homes and commercial spaces, providing modern and sleek lighting solutions.",
+      image: profileLightsImg,
     },
   ];
 
