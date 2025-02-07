@@ -5,6 +5,7 @@ import Projects from "./component/Projects";
 import Contact from "./component/Contact";
 import Testimonials from "./component/Testimonials";
 import Footer from "./component/Footer";
+import Title from "./component/Title";
 
 const App = () => {
   return (

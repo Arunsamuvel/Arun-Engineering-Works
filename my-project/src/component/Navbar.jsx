@@ -1,80 +1,61 @@
 import React, { useState } from "react";
 import { Menu, X } from "lucide-react";
+import Title from "./Title";
 
 const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 px-4 lg:px-0">
-      <div className=" max-w-7xl mx-auto flex h-14 items-center">
-        <div className="md:mr-4 flex justify-between w-full">
-          <a href="#" className="mr-6 flex items-center space-x-2">
-            <img src="logo.png" alt="" className="w-36" />
+    <header className="sticky top-0 z-50 w-full border-b bg-white shadow-md px-4 lg:px-8">
+      <div className="max-w-7xl mx-auto flex items-center justify-between h-16">
+        {/* Logo Section */}
+        <a href="#" className="flex items-center space-x-2">
+          <img src="logo.png" alt="Logo" className="w-36" />
+        </a>
+
+        {/* Title - Arun Engineering Works */}
+        <Title />
+
+        {/* Desktop Navigation */}
+        <nav className="hidden md:flex items-center space-x-6 text-lg font-medium">
+          <a href="#about" className="transition hover:text-gray-700 text-gray-500">
+            About
           </a>
-          <nav className="md:flex hidden items-center space-x-6 text-lg font-medium">
-            <a
-              href="#about"
-              className="transition-colors hover:text-foreground/80 text-foreground/60"
-            >
-              About
-            </a>
-            <a
-              href="#projects"
-              className="transition-colors hover:text-foreground/80 text-foreground/60"
-            >
-              Projects
-            </a>
-            <a
-              href="#testimonials"
-              className="transition-colors hover:text-foreground/80 text-foreground/60"
-            >
-              Testimonials
-            </a>
-            <a
-              href="#contact"
-              className="transition-colors hover:text-foreground/80 text-foreground/60"
-            >
-              Contact
-            </a>
-          </nav>
-        </div>
+          <a href="#projects" className="transition hover:text-gray-700 text-gray-500">
+            Projects
+          </a>
+          <a href="#testimonials" className="transition hover:text-gray-700 text-gray-500">
+            Testimonials
+          </a>
+          <a href="#contact" className="transition hover:text-gray-700 text-gray-500">
+            Contact
+          </a>
+        </nav>
+
+        {/* Mobile Menu Button */}
         <button
-          className="inline-flex items-center justify-center rounded-md md:hidden"
+          className="md:hidden p-2 rounded-md focus:outline-none"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         >
           <span className="sr-only">Open main menu</span>
-
-          {mobileMenuOpen ? (
-            <X className="h-6 w-6" aria-hidden="true" />
-          ) : (
-            <Menu className="h-6 w-6" aria-hidden="true" />
-          )}
+          {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
         </button>
       </div>
+
+      {/* Mobile Navigation Menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden">
-          <div className="space-y-1 px-2 pb-3 pt-2">
-            <a
-              href="#about"
-              className="block rounded-md px-3 py-2 text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900"
-            >
+        <div className="md:hidden bg-white border-t shadow-md absolute w-full left-0">
+          <div className="flex flex-col items-center space-y-4 py-4">
+            <a href="#about" className="text-gray-700 text-lg hover:text-gray-900">
               About
             </a>
-            <a
-              href="#projects"
-              className="block rounded-md px-3 py-2 text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900"
-            >
+            <a href="#projects" className="text-gray-700 text-lg hover:text-gray-900">
               Projects
             </a>
-            <a
-              href="#testimonials"
-              className="block rounded-md px-3 py-2 text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900"
-            >
+            <a href="#testimonials" className="text-gray-700 text-lg hover:text-gray-900">
               Testimonials
             </a>
-            <a
-              href="#contact"
-              className="block rounded-md px-3 py-2 text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900"
-            >
+            <a href="#contact" className="text-gray-700 text-lg hover:text-gray-900">
               Contact
             </a>
           </div>
