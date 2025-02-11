@@ -66,6 +66,7 @@ const Contact = () => {
 
           {/* Right Section (Form) */}
           <form
+            netlify
             onSubmit={handleSubmit}
             className="w-full md:w-1/2 bg-gray-100 rounded-lg p-10 shadow-lg"
           >
